@@ -1,0 +1,167 @@
+<!-- DM3014 Interactive Devices, Ashley Hi 2026
+  -- Week 3 - Net Art
+  -- Assignment Example
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sculpture As 100 Hyperlinks</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body>
+<script>
+  // ------------------------------------------------------------------
+  // EDIT ME
+  // One object per hyperlink on the page:
+  //   x, y   -> where it sits on the page, in pixel coordinates
+  //   label  -> the clickable text
+  //   url    -> where it links to
+  //   w, h   -> (optional) popup window size for this link only.
+  //             leave them out and it uses defaultWidth/defaultHeight below
+  //
+  // To add a link: copy any line, change the values, add a comma.
+  // To remove a link: delete its line.
+  
+  let links = [
+    //one shape
+  { x: 150, y:250, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:270, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 110, y:290, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 90,  y:310, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70,  y:330, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+ 
+  { x: 180, y:250, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:250, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:275, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:300, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:325, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:350, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:370, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:390, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:410, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:430, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:450, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:470, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:490, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+
+  { x: 130, y:390, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:410, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:430, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:450, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:470, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:490, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+
+  { x: 110, y:390, label:"1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 90, y:390, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:390, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:360, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+
+  { x: 110, y:510, label:"1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 90, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+
+  { x: 230, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 250, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 270, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+
+  { x: 230, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 250, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 270, y:510, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+ 
+  { x: 270, y:530, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 270, y:550, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:530, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:550, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+ 
+  { x: 250, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 230, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 210, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 190, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 170, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 150, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 130, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 110, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 90, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  { x: 70, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
+  
+  { x: 160, y:550, label: "ONE", url: "https://www.youtube.com/watch?v=Ix9NXVIbm2A"},
+
+  //------
+  { x: 700, y: 70, label: "I'm", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
+  { x: 760, y: 110, label: "a", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
+  { x: 700, y: 150, label: "Mess", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
+  { x: 790, y: 70, label: "The Man", url: "https://www.youtube.com/watch?v=i2e3bAdPGAo" },
+
+  { x: 700, y: 300, label: "Sing", url: "https://www.youtube.com/watch?v=tlYcUqEPN58"},
+  { x: 500, y: 515, label: "Don't", url: "https://www.youtube.com/watch?v=iD2rhdFRehU"},
+  { x: 700, y: 360, label: "Nina", url: "https://www.youtube.com/watch?v=lh9S0cyp0fg" },
+  { x: 100, y: 600, label: "Photograph", url: "https://www.youtube.com/watch?v=nSDgHBxUbVQ" },
+  { x: 200, y: 740, label: "Bloodstream", url: "https://www.youtube.com/watch?v=XIJHg1XWR7o" },
+  {x: 290, y: 740, label: "The",},
+  { x: 320, y: 740, label: "Tenerife Sea", url: "https://www.youtube.com/watch?v=2tHes1FQfwU" },
+  { x: 630, y: 510, label: "Runaway", url: "https://www.youtube.com/watch?v=cgMd5YGTSCM" },
+
+  { x: 330, y: 300, label: "Thinking Out", url: "https://www.youtube.com/watch?v=lp-EO5I60KA" },
+   { x: 535, y: 300, label: "Loud", url: "https://www.youtube.com/watch?v=WpyfrixXBqU" },
+  
+  { x: 800, y: 340, label: "Afire Love", url: "https://www.youtube.com/watch?v=JznXx1Ns374" },
+  { x: 460, y: 450, label: "Take It Back", url: "https://www.youtube.com/watch?v=jtnyOhhs7mw" },
+  { x: 100, y: 90, label: "Shirtsleeves", url: "https://www.youtube.com/watch?v=C0Vx_9mfFFI" },
+  { x: 720, y: 580, label: "Even My Dad Does Sometimes", url: "https://www.youtube.com/watch?v=cZgoNZ9NL_I" },
+  { x: 450, y: 740, label: "I See Fire", url: "https://www.youtube.com/watch?v=2fngvQS_PmQ" },
+  //{ x: 200, y: 100, label: "XXXXXXXXXXXXXXXXXXX", url: "https://www.youtube.com/playlist?list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi" },
+  { x: 200, y: -100, label: "X", url:"https://www.youtube.com/playlist?list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi" },
+];
+  // ------------------------------------------------------------------
+  
+  // popup size used for any link that doesn't set its own w/h
+  let defaultWidth = 700;
+  let defaultHeight = 700;
+
+  function setup() {
+    noCanvas(); // this page only places links, so we don't need a canvas
+    textSize(50);
+    for (let i = 0; i < links.length; i++) {
+      let link = links[i];
+      let a = createA('javascript:void(0)', link.label);
+      a.position(link.x, link.y);
+      a.mousePressed(() => openPopup(link));
+
+      if (link.label === "X") {
+      a.style('font-size', '800px'); // size font
+      a.style('z-index', '-3'); // Keeps X behind everything else
+    } else if (link.label === "Don't") {
+      a.style('font-size', '30px'); 
+      a.style('transform', 'rotate(236deg)'); // rotate 
+    } else if (link.label === "Sing") {
+      a.style('font-size', '50px'); 
+    } else if (link.label === "Runaway") {
+      a.style('font-size', '30px'); 
+      a.style('transform', 'rotate(55deg)'); // rotate 
+    } else if (link.label === "Take It Back") {
+      a.style('font-size', '20px'); 
+      a.style('transform', 'rotate(235deg)'); // rotate 
+    }
+  }
+   
+   
+  }
+
+  // opens a link in its own small popup window
+  function openPopup(link) {
+    let w = link.w || defaultWidth;
+    let h = link.h || defaultHeight;
+    window.open(
+      link.url,
+      '_blank',
+      `width=${w},height=${h},left=100,top=50,resizable=yes,scrollbars=yes`
+    );
+  }
+
+</script>
+</body>
+</html>
