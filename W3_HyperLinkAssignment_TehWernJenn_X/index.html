@@ -1,6 +1,25 @@
-<!-- DM3014 Interactive Devices, Ashley Hi 2026
+<!-- DM3014 Interactive Devices, Jenn Teh 2006
   -- Week 3 - Net Art
-  -- Assignment Example 
+  -- 
+  -- Comments:
+  -- Decided to create a album hyperlink - album cover X by Ed Sheeran
+  --
+  -- Trying to create an art image with a hints to the album cover
+  -- Designing how the hyperlinks of the music title will look if they are arranged on album cover
+  -- {See code and final HTML page for more details}
+  --
+  -- Edits:
+  -- Create a main 'x' label 
+  -- - Enlarged the 'x' label to reflect the 'x' album  
+  -- Used layering to place certain text it behind the other hyperlinks; eg. 'x' as the bigger the text the area it covers may block the other hyperlinks
+  -- Repeated the numbers to create design of number 1 (all 1 links to the same song)
+  -- Increase the size of the words to make it bolder in text; changing the reading patterns guide the viewer to read the titles in a certain order which creates a short text.
+  -- Spread out/Break the music titles to create a fun variation in reading the titles 
+  --   - Im a Mess & The man; which can also be read as Im the man etc.
+  -- Using the rotate function to create a more unqinue view of reading the music titles
+  -- x,y coordinates of the labels are changed.
+  -- Each label is linked to its music title on youtube
+  -- Delux titles of the albuma are added as an add on below the 'x' album cover design
 -->
 
 <!DOCTYPE html>
@@ -24,6 +43,7 @@
   // To add a link: copy any line, change the values, add a comma.
   // To remove a link: delete its line.
   
+
   let links = [
     //one shape
   { x: 150, y:250, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
@@ -131,6 +151,7 @@
       a.position(link.x, link.y);
       a.mousePressed(() => openPopup(link));
 
+      //changing the size/ orientation of the texts/labels
       if (link.label === "X") {
       a.style('font-size', '800px'); // size font
       a.style('z-index', '-3'); // Keeps X behind everything else
@@ -147,7 +168,6 @@
       a.style('transform', 'rotate(235deg)'); // rotate 
     }
   }
-   
    
   }
 
