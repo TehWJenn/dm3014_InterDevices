@@ -105,39 +105,50 @@
   { x: 90, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
   { x: 70, y:570, label: "1", url: "https://www.youtube.com/watch?v=ZpbyMClPnic&list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi&index=1"},
   
+  // MV title 1 ( same as the 1 shape above)
   { x: 160, y:550, label: "ONE", url: "https://www.youtube.com/watch?v=Ix9NXVIbm2A"},
 
-  //------
+  //MV title 'Im a Mess' 
   { x: 700, y: 70, label: "I'm", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
   { x: 760, y: 110, label: "a", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
   { x: 700, y: 150, label: "Mess", url: "https://www.youtube.com/watch?v=-t2CR9qZRj0" },
+  // MV title 'The Man'
   { x: 790, y: 70, label: "The Man", url: "https://www.youtube.com/watch?v=i2e3bAdPGAo" },
 
-  { x: 700, y: 300, label: "Sing", url: "https://www.youtube.com/watch?v=tlYcUqEPN58"},
+  //MV title 'Sing', 'Don't', 'Nina', 'Photograph', 'Bloodstream'
   { x: 500, y: 515, label: "Don't", url: "https://www.youtube.com/watch?v=iD2rhdFRehU"},
   { x: 700, y: 360, label: "Nina", url: "https://www.youtube.com/watch?v=lh9S0cyp0fg" },
   { x: 100, y: 600, label: "Photograph", url: "https://www.youtube.com/watch?v=nSDgHBxUbVQ" },
   { x: 200, y: 740, label: "Bloodstream", url: "https://www.youtube.com/watch?v=XIJHg1XWR7o" },
+
+  //MV title 'The Tenerife Sea' & 'Runaway'
   {x: 290, y: 740, label: "The",},
   { x: 320, y: 740, label: "Tenerife Sea", url: "https://www.youtube.com/watch?v=2tHes1FQfwU" },
   { x: 630, y: 510, label: "Runaway", url: "https://www.youtube.com/watch?v=cgMd5YGTSCM" },
 
+  //MV title 'Thinking Out Loud'
+  { x: 700, y: 300, label: "Sing", url: "https://www.youtube.com/watch?v=tlYcUqEPN58"},
   { x: 330, y: 300, label: "Thinking Out", url: "https://www.youtube.com/watch?v=lp-EO5I60KA" },
    { x: 535, y: 300, label: "Loud", url: "https://www.youtube.com/watch?v=WpyfrixXBqU" },
   
+   //MV title 'Afire Love', 'Take It Back', 'Shirtsleeves', 'Even My Dad Does Sometimes', 'I See Fire'
   { x: 800, y: 340, label: "Afire Love", url: "https://www.youtube.com/watch?v=JznXx1Ns374" },
   { x: 460, y: 450, label: "Take It Back", url: "https://www.youtube.com/watch?v=jtnyOhhs7mw" },
   { x: 100, y: 90, label: "Shirtsleeves", url: "https://www.youtube.com/watch?v=C0Vx_9mfFFI" },
   { x: 720, y: 580, label: "Even My Dad Does Sometimes", url: "https://www.youtube.com/watch?v=cZgoNZ9NL_I" },
   { x: 450, y: 740, label: "I See Fire", url: "https://www.youtube.com/watch?v=2fngvQS_PmQ" },
+
   //{ x: 200, y: 100, label: "XXXXXXXXXXXXXXXXXXX", url: "https://www.youtube.com/playlist?list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi" },
+
+  //Album cover 'X' 
   { x: 200, y: -100, label: "X", url:"https://www.youtube.com/playlist?list=PLjp0AEEJ0-fEpN_3LiEEcNqua_SDx4PMi" },
 ];
   // ------------------------------------------------------------------
   
   // popup size used for any link that doesn't set its own w/h
-  let defaultWidth = 700;
-  let defaultHeight = 700;
+  //Changed the W,H to make it bigger then the Original size of the popup window to make it more visible to the viewer 
+  let defaultWidth = 900;
+  let defaultHeight = 900;
 
   function setup() {
     noCanvas(); // this page only places links, so we don't need a canvas
@@ -148,7 +159,7 @@
       a.position(link.x, link.y);
       a.mousePressed(() => openPopup(link));
 
-      //changing the size/ orientation of the texts/labels
+      //Changing the size/ orientation of the texts/labels
       if (link.label === "X") {
       a.style('font-size', '800px'); // size font
       a.style('z-index', '-3'); // Keeps X behind everything else
